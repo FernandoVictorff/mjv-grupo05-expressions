@@ -24,14 +24,14 @@ public class ImpressorCupom {
          logo a variável conteudo deveria ser retornada para outros "processadores"
          como gerador de arquivo txt, pdf ou até mesmo envio por e-mail
          */
-        generateCupom(cupom);
+        generateTextCupom(cupom);
         System.out.println(conteudo.toString());
         //em caso de resolver explorar algumas formas de apresentação
         //return conteudo.toString();
     }
 
 
-    private void generateCupom(Cupom cupom) {
+    private void generateTextCupom(Cupom cupom) {
         appendDashed();
         appendLine(LEFT, cupom.nomeFantasia);
         Endereco end = cupom.endereco;
@@ -42,7 +42,7 @@ public class ImpressorCupom {
         appendLine("IM:%s%33s%d", LEFT, cupom.im, STRING_EMPTY, cupom.ccf);
         appendLine(RIGHT, "CDD:" + cupom.cdd);
         appendDashed();
-        appendLine(LEFT, "CUPOM FISCAL" + BREAK_LINE);
+        appendLine(LEFT, "CUPOM FISCAL");
         appendLine("ITEM COD. %-30s%10s", LEFT, "DESCRIÇÃO","VALOR");
         for (int i = 0; i < cupom.itens.size(); i++) {
             CupomItem item = cupom.itens.get(i);
